@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTP:SSL} !1
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L,R=301]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.sun-ny.com$ [NC]
+RewriteRule ^(.*)$ https://sun-ny.com/$1 [R=301,L]

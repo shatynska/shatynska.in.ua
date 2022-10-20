@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www
+      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 8875:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.shatynska.entrypoints=https"
+      - "traefik.http.routers.shatynska.rule=Host(`shatynska.in.ua.localhost`)"
+      - "traefik.http.routers.shatynska.tls=true"
+      - "traefik.http.routers.shatynska.tls.certresolver=letsEncrypt"
+    networks:
+      - proxy
+      - default
+    depends_on:
+      - app
+    container_name: shatynska_nginx
+
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    user: 1000:1000
+    container_name: shatynska_app
+    depends_on:
+      - db
+    networks:
+      - proxy
+      - default
+
+  db:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - 8104:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: shatynska_db
+    networks:
+      - proxy
+      - default
+
+networks:
+  proxy:
+    external: true
+  default:
+    driver: bridge
