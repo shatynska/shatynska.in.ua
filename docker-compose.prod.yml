@@ -12,7 +12,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.shatynska.entrypoints=https"
-      - "traefik.http.routers.shatynska.rule=Host(`shatynska.in.ua`)"
+      - "traefik.http.routers.shatynska.rule=Host(`shatynska.psypra.com`)"
       - "traefik.http.routers.shatynska.tls=true"
       - "traefik.http.routers.shatynska.tls.certresolver=letsEncrypt"
     networks:
