@@ -95,7 +95,7 @@ if (!isset($_GET['thank'])) {
 <br>додатково : <textarea name="more" style="font-size: 16px;" ></textarea><br>
 		<br><input type="submit" value="записатися" style="cursor: pointer; padding: 0.5vw 3vw; background-color: #b9c694; font-weight: bold;font-size: 16px;">
 	</form>
-<?php } else {echo '<br>Дякуємо! Ми до Вас зателефонуємо в найближчий чаc щоб підтвердити попередній запис.<br><br><br>';} 	?>
+<?php } else {echo '<br>Дякую! Я зателефоную до Вас найближчим часом, щоб підтвердити попередній запис.<br><br><br>';} 	?>
 </div>
 
 <div class="n12"><?php $line = mysqli_fetch_array(mysqli_query($db, "SELECT * from text where id=9")); echo $line['text']; ?>	  </div>
