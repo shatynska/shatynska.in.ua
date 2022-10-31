@@ -52,6 +52,28 @@ services:
     networks:
       - default
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: shatynska_pma
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root 
+    restart: always
+    ports:
+      - 8282:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.shatynskapma.entrypoints=https"
+      - "traefik.http.routers.shatynskapma.rule=Host(`pma.shatynska.localhost`)"
+      - "traefik.http.routers.shatynskapma.tls=true"
+      - "traefik.http.routers.shatynskapma.tls.certresolver=letsEncrypt"
+    depends_on:
+      - db
+    networks:
+      - traefik-public
+      - default
+
 networks:
   traefik-public:
     external: true
