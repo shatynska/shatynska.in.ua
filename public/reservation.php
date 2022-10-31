@@ -16,6 +16,7 @@ $tn=array(1=>'8:30', 2=>'9:45', 3=>'12:00', 4=>'12:45');
 	 <title>Попередній запис : Психолог та психотерапевт Шатинська Альона: психологічна допомога в Дрогобичі</title>
 	 <meta name='description' content='Психолог та психотерапевт Шатинська Альона. Консультування: особистісне, сімейне та психолого-педагогічне'>
 <?php include ("begin.php"); ?>
+
 <div id="short">
 <h1 id="reservation">попередній запис</h1><br>
 	<?php
@@ -61,6 +62,7 @@ if (!isset($_GET['thank'])) {
 </div>
 
 <main>
+
 <div id="short2">
 <h1 id="reservation">попередній запис</h1><br>
 	<?php
@@ -89,7 +91,7 @@ if (!isset($_GET['thank'])) {
 		        $online="";
 				if ($wday==0) {echo '<optgroup label="'.$w[$iii].$online.'">'; $optb=1; $wday=1; }
 				$grt=$iii.'-'.$ti.'-'.date("Y-m-d", $lm);
-				echo '<option value="'.$grt.'"'; if ($_GET['grt']==$grt) {echo ' selected';} echo '>' .date("d.m", $lm).' о '.$tn[$ti].'</option>';
+				echo '<option value="'.$grt.'"'; if (isset($_GET['grt']) && $_GET['grt']==$grt) {echo ' selected';} echo '>' .date("d.m", $lm).' о '.$tn[$ti].'</option>';
 			}
 		}
 		if ($optb==1) {echo '</optgroup>'; $optb=0;}

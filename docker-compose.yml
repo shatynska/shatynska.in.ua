@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   nginx:
@@ -7,33 +7,30 @@ services:
       - ./:/var/www
       - ./_docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
-      - 8875:80
+      - 8082:80
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
+      - "traefik.docker.network=traefik-public"
       - "traefik.http.routers.shatynska.entrypoints=https"
-      - "traefik.http.routers.shatynska.rule=Host(`shatynska.in.ua.localhost`)"
+      - "traefik.http.routers.shatynska.rule=Host(`shatynska.localhost`)"
       - "traefik.http.routers.shatynska.tls=true"
       - "traefik.http.routers.shatynska.tls.certresolver=letsEncrypt"
     networks:
-      - proxy
+      - traefik-public
       - default
     depends_on:
       - app
     container_name: shatynska_nginx
 
   app:
-    build:
-      context: .
-      dockerfile: _docker/app/Dockerfile
+    image: getaniftywebsite/php:latest
     volumes:
       - ./:/var/www
-    user: 1000:1000
+      - ./_docker/app/php.ini:/usr/local/etc/php/conf.d/php.ini
     container_name: shatynska_app
     depends_on:
       - db
     networks:
-      - proxy
       - default
 
   db:
@@ -47,15 +44,15 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     ports:
-      - 8104:3306
+      - 8182:3306
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     container_name: shatynska_db
+    labels:
+      - traefik.enable=false
     networks:
-      - proxy
       - default
 
 networks:
-  proxy:
+  traefik-public:
     external: true
   default:
-    driver: bridge
