@@ -1,14 +1,5 @@
 <?php include ("first.php");
 $l = mysqli_query($db, "SET lc_time_names = 'uk_UA'");
-if (isset($_POST['rt'])){
-	$res=mysqli_query($db, 'insert into clients (name, phone, more) values ( "'.htmlspecialchars($_POST['name']).'", "'.htmlspecialchars($_POST['phone']).'", "'.htmlspecialchars($_POST['more']).'")') or die ('помилка');
-	$last_id =mysqli_insert_id($db);
-	$dd=substr($_POST['rt'], 0, 1);
-	$tt=substr($_POST['rt'], 2, 1);
-	$ddate=substr($_POST['rt'], 4);
-	$res=mysqli_query($db, 'insert into changes (c_id, date, d, t) values ("'.$last_id.'", "'.$ddate.'", "'.$dd.'",  "'.$tt.'")') or die ('помилка2');
-	Header('Location: ?thank');
-}
 $w=array(1=>'понеділок', 2=>'вівторок', 3=>'середа', 4=>'четвер', 5=>'п`ятниця');
 $tn=array(1=>'8:30', 2=>'9:45', 3=>'12:00', 4=>'12:45');
 ?>

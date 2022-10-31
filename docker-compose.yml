@@ -41,7 +41,7 @@ services:
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
+      MYSQL_USER: admin
       MYSQL_PASSWORD: root
     ports:
       - 8182:3306
