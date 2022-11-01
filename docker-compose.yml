@@ -26,6 +26,11 @@ services:
     volumes:
       - /var/www/shatynska.in.ua/:/var/www
       - /var/www/shatynska.in.ua/_docker/app/php.ini:/usr/local/etc/php/conf.d/php.ini
+    environment:
+      HOSTNAME_DB: db
+      USERNAME_DB: admin
+      PASSWORD_DB: root
+      BASENAME: laravel
     depends_on:
       - db
     networks:
