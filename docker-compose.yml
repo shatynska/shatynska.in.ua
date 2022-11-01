@@ -4,8 +4,8 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./:/var/www
-      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+      - /var/www/shatynska.in.ua/:/var/www
+      - /var/www/shatynska.in.ua/_docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
       - 8082:80
     labels:
@@ -20,14 +20,12 @@ services:
       - default
     depends_on:
       - app
-    container_name: shatynska_nginx
 
   app:
     image: getaniftywebsite/php:latest
     volumes:
-      - ./:/var/www
-      - ./_docker/app/php.ini:/usr/local/etc/php/conf.d/php.ini
-    container_name: shatynska_app
+      - /var/www/shatynska.in.ua/:/var/www
+      - /var/www/shatynska.in.ua/_docker/app/php.ini:/usr/local/etc/php/conf.d/php.ini
     depends_on:
       - db
     networks:
@@ -37,7 +35,7 @@ services:
     image: mysql:8.0
     restart: always
     volumes:
-      - ./tmp/db:/var/lib/mysql
+      - /var/www/shatynska.in.ua/tmp/db:/var/lib/mysql
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: root
@@ -46,18 +44,16 @@ services:
     ports:
       - 8182:3306
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    container_name: shatynska_db
     labels:
       - traefik.enable=false
     networks:
       - default
 
-  phpmyadmin:
+  pma:
     image: phpmyadmin/phpmyadmin
-    container_name: shatynska_pma
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_ROOT_PASSWORD: root
     restart: always
     ports:
       - 8282:80

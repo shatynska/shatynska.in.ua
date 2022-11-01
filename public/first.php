@@ -1,8 +1,8 @@
 <?php
-$hostname_db = 'db';
-$username_db = 'root';
-$password_db = 'root';
-$base = 'laravel';
+$hostname_db = getenv('HOSTNAME_DB');
+$username_db = getenv('USERNAME_DB');
+$password_db = getenv('PASSWORD_DB');
+$base = getenv('BASENAME');
 
 if ($db = mysqli_connect($hostname_db, $username_db, $password_db, $base))
 {
