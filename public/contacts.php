@@ -8,12 +8,12 @@ if (isset($_POST['rt'])){
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=windows-1251' . "\r\n";
 	mail('mail@shatynska.in.ua', 'попередній запис', htmlspecialchars($_POST['rt']).'<br/>'.htmlspecialchars($_POST['phone']).'<br/>'.htmlspecialchars($_POST['more']), $headers) or die('Помилка!');
-	echo "<script>alert(\"Дякуємо! Ми до Вас зателефонуємо в найближчий час (від однієї до чотирьох годин в робочий час) щоб підтвердити запис.\");</script>";
+	echo "<script>alert(\"Дякуємо! Ми до Вас зателефонуємо в найближчий час щоб підтвердити запис.\");</script>";
 }
 ?>
 	 <link rel="canonical" href="https://shatynska.in.ua/contacts.php"/>
 	 <title>Контакти : Психолог : консультації психолога та тренінги : психологічна допомога в Дрогобичі</title>
-	 <meta name='description' content='Психолоr, психотерапевт Шатинська Альона. Консультування: особистісне, сімейне та психолого-педагогічне. .'>
+	 <meta name='description' content='Психолоr, психотерапевт Шатинська Олена. Консультування: особистісне, сімейне та психолого-педагогічне. .'>
 <?php include ("begin.php"); ?>
 <div id="short"></div>
 <main>

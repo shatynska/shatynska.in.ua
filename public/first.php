@@ -6,11 +6,14 @@ $base = getenv('BASENAME');
 
 if ($db = mysqli_connect($hostname_db, $username_db, $password_db, $base))
 {
-mysqli_set_charset($db, 'utf8');  }
+	mysqli_set_charset($db, 'utf8'); 
+	error_reporting(0);
+}
 else
 {
     throw new Exception('Unable to connect');
 }
+
 if (isset($_POST['rt'])){
 	$res=mysqli_query($db, 'insert into clients (name, phone, more) values ( "'.htmlspecialchars($_POST['name']).'", "'.htmlspecialchars($_POST['phone']).'", "'.htmlspecialchars($_POST['more']).'")') or die ('помилка');
 	$last_id =mysqli_insert_id($db);

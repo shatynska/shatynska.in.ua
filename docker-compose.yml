@@ -12,7 +12,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-public"
       - "traefik.http.routers.shatynska.entrypoints=https"
-      - "traefik.http.routers.shatynska.rule=Host(`shatynska.localhost`)"
+      - "traefik.http.routers.shatynska.rule=Host(`${DOMEN}`)"
       - "traefik.http.routers.shatynska.tls=true"
       - "traefik.http.routers.shatynska.tls.certresolver=letsEncrypt"
     networks:
@@ -28,9 +28,9 @@ services:
       - /var/www/shatynska.in.ua/_docker/app/php.ini:/usr/local/etc/php/conf.d/php.ini
     environment:
       HOSTNAME_DB: db
-      USERNAME_DB: admin
+      USERNAME_DB: ${USER_NAME}
       PASSWORD_DB: root
-      BASENAME: laravel
+      BASENAME: ${DATABASE_NAME}
     depends_on:
       - db
     networks:
@@ -42,9 +42,9 @@ services:
     volumes:
       - /var/www/shatynska.in.ua/tmp/db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: admin
+      MYSQL_USER: ${USER_NAME}
       MYSQL_PASSWORD: root
     ports:
       - 8182:3306
@@ -58,7 +58,7 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD_FILE: root
     restart: always
     ports:
       - 8282:80
@@ -66,7 +66,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-public"
       - "traefik.http.routers.shatynskapma.entrypoints=https"
-      - "traefik.http.routers.shatynskapma.rule=Host(`pma.shatynska.localhost`)"
+      - "traefik.http.routers.shatynskapma.rule=Host(`pma.${DOMEN}`)"
       - "traefik.http.routers.shatynskapma.tls=true"
       - "traefik.http.routers.shatynskapma.tls.certresolver=letsEncrypt"
     depends_on:
