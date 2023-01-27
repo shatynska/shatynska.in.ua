@@ -6,4 +6,3 @@ if (isset($_GET['rt'])){
 	$dd=substr($_GET['rt'], 2);
     $res=mysqli_query($db, 'UPDATE reserv SET  t'.$tt.'="' .$last_id.'" WHERE ID="'.$dd.'"') or die ('помилка2');
 }
-?>

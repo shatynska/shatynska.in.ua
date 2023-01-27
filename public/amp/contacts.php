@@ -1,7 +1,7 @@
 <?php include ("first.php"); ?>
 <link rel="canonical" href="https://shatynska.in.ua/contacts.php"/>
-<title>Психолог та психотерапевт Шатинська Альона. Дрогобич. &#9743; +380980074869. Психотерапія та психологічні консультації</title>
-<meta name='description' content='Психолог та психотерапевт Шатинська Альона. Дрогобич. &#9743; +380980074869. Психотерапія та психологічні консультації'>
+<title>Психолог та психотерапевт Шатинська Олена. Дрогобич. &#9743; +380980074869. Психотерапія та психологічні консультації</title>
+<meta name='description' content='Психолог та психотерапевт Шатинська Олена. Дрогобич. &#9743; +380980074869. Психотерапія та психологічні консультації'>
 <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
 <?php include ("begin.php"); ?>
 <main>

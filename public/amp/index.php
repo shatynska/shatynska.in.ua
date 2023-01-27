@@ -1,10 +1,10 @@
 <?php include("first.php"); ?>
-<title>Психолог та психотерапевт Альона Шатинська. Психологічна допомога в Дрогобичі: Психотерапія та психологічні консультації.</title>
+<title>Психолог та психотерапевт Олена Шатинська. Психологічна допомога в Дрогобичі: Психотерапія та психологічні консультації.</title>
 <meta name='description' content='Психолог та психотерапевт Шатинська Альона. Дрогобич. &#9743; +380980074869. Психотерапія та психологічні консультації'>
 <link rel="canonical" href="https://shatynska.in.ua/">
 <?php include("begin.php"); ?>
 <section id="psy"><a href="/amp/psychologist.php"><h1>психолог</h1></a><p>Альона Шатинська, 41 рік, психолог та гештальт-терапевт в Дрогобичі. У 1998-2003рр. навчалася за спеціальністю "Психологія" в Дрогобицькому..... </p>
-<amp-img alt="психолог Шатинська Альона" src="/images/photomini.jpg" height="280" width="280"></amp-img><a href="/amp/psychologist.php" class="more">докладніше</a></section>
+<amp-img alt="психолог Шатинська Олена" src="/images/photomini.jpg" height="280" width="280"></amp-img><a href="/amp/psychologist.php" class="more">докладніше</a></section>
 <aside><h2><a class="white" href="/amp/reservation.php">попередній запис</a></h2>
 	<?php
     $w=array(1=>'понеділок', 2=>'вівторок', 3=>'середа', 4=>'четвер', 5=>'п`ятниця');

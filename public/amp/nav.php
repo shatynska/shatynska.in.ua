@@ -75,7 +75,7 @@ html {background-image: url(/images/fonmob2.jpg);}
 <footer>
 <h2>контакти</h2>
 <p>психолог, психотерапевт<br>
-Альона Шатинська<br>
+Олена Шатинська<br>
 м. Дрогобич<br>вул. Петра Сагайдачного 142а<br>
 <a href="tel:+380980074869" id="tel">телефон: +380980074869</a><br/>
 <a href="mailto:mail@shatynska.in.ua">пошта: mail@shatynska.in.ua</a><br>
